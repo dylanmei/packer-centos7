@@ -1,0 +1,51 @@
+{
+  "builders": [{
+    "type": "virtualbox-iso",
+    "headless": "false",
+    "boot_command": [
+      "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+    ],
+    "boot_wait": "10s",
+    "disk_size": 5000,
+    "hard_drive_interface": "sata",
+    "guest_os_type": "RedHat_64",
+    "http_directory": "./http",
+    "iso_checksum_type": "sha256",
+    "iso_checksum": "498bb78789ddc7973fe14358822eb1b48521bbaca91c17bd132c7f8c903d79b3",
+    "iso_url": "http://mirrors.gigenet.com/centos/7/isos/x86_64/CentOS-7-x86_64-NetInstall-1503.iso",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "ssh_port": 22,
+    "ssh_wait_timeout": "10000s",
+    "shutdown_command": "sudo rm -rf /tmp/* && sudo /sbin/halt -p",
+    "guest_additions_sha256": "2a87971ae3c7e57e87713967a6f242acbdafcc09b635cba98e6dd3a7f5292d3b",
+    "vboxmanage": [
+      ["modifyvm", "{{.Name}}", "--memory", "512"],
+      ["modifyvm", "{{.Name}}", "--cpus", "2"]
+    ]
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "execute_command": "sudo -S sh '{{.Path}}'",
+    "scripts": [
+      "scripts/vagrant.sh",
+      "scripts/virtualbox.sh",
+      "scripts/cleanup.sh"
+    ]
+  }],
+  "post-processors": [{
+    "type": "vagrant",
+    "only": ["virtualbox-iso"],
+    "output": "CentOS-7-x86_64-virtualbox.box"
+  }, {
+    "type": "atlas",
+    "only": ["virtualbox-iso"],
+    "artifact": "dylanmei/CentOS-7",
+    "artifact_type": "vagrant.box",
+    "metadata": {
+      "provider": "vitualbox",
+      "version": "0.1.0",
+      "Minimal CentOS-7 for VirtualBox [dylanmei/packer-centos7](https://github.com/dylanmei/packer-centos7)"
+    }
+  }]
+}
