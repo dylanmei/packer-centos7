@@ -45,7 +45,7 @@
     "metadata": {
       "provider": "vitualbox",
       "version": "0.1.0",
-      "Minimal CentOS-7 for VirtualBox [dylanmei/packer-centos7](https://github.com/dylanmei/packer-centos7)"
+      "description": "Minimal CentOS-7 for VirtualBox [dylanmei/packer-centos7](https://github.com/dylanmei/packer-centos7)"
     }
   }]
 }
