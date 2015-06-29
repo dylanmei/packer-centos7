@@ -43,7 +43,7 @@
     "artifact": "dylanmei/CentOS-7",
     "artifact_type": "vagrant.box",
     "metadata": {
-      "provider": "vitualbox",
+      "provider": "virtualbox",
       "version": "0.1.0",
       "description": "Minimal CentOS-7 + VirtualBox Guest Additions (4.3.26) - [dylanmei/packer-centos7](https://github.com/dylanmei/packer-centos7)"
     }
