@@ -33,19 +33,20 @@
       "scripts/cleanup.sh"
     ]
   }],
-  "post-processors": [{
-    "type": "vagrant",
-    "only": ["virtualbox-iso"],
-    "output": "CentOS-7-x86_64-virtualbox.box"
-  }, {
-    "type": "atlas",
-    "only": ["virtualbox-iso"],
-    "artifact": "dylanmei/CentOS-7",
-    "artifact_type": "vagrant.box",
-    "metadata": {
-      "provider": "virtualbox",
-      "version": "0.1.0",
-      "description": "Minimal CentOS-7 + VirtualBox Guest Additions (4.3.26) - [dylanmei/packer-centos7](https://github.com/dylanmei/packer-centos7)"
-    }
-  }]
+  "post-processors": [
+    [{
+      "type": "vagrant",
+      "keep_input_artifact": true
+    }, {
+      "type": "atlas",
+      "only": ["virtualbox-iso"],
+      "artifact": "dylanmei/CentOS-7",
+      "artifact_type": "vagrant.box",
+      "metadata": {
+        "provider": "virtualbox",
+        "version": "0.1.1",
+        "description": "Minimal CentOS-7 + VirtualBox Guest Additions (4.3.26) - [dylanmei/packer-centos7](https://github.com/dylanmei/packer-centos7)"
+      }
+    }]
+  ]
 }
