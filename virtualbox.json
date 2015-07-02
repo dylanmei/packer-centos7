@@ -6,7 +6,7 @@
       "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
     ],
     "boot_wait": "10s",
-    "disk_size": 5000,
+    "disk_size": 10000,
     "hard_drive_interface": "sata",
     "guest_os_type": "RedHat_64",
     "http_directory": "./http",
@@ -44,7 +44,7 @@
       "artifact_type": "vagrant.box",
       "metadata": {
         "provider": "virtualbox",
-        "version": "0.1.1",
+        "version": "0.1.2",
         "description": "Minimal CentOS-7 + VirtualBox Guest Additions (4.3.26) - [dylanmei/packer-centos7](https://github.com/dylanmei/packer-centos7)"
       }
     }]
